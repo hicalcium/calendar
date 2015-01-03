@@ -95,4 +95,5 @@ SPAN.ui-state-default {
   margin:0 auto !important;
   background-repeat:none;
   background-size:cover;
+  background-position:center;
 }
