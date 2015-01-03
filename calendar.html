@@ -1,0 +1,103 @@
+<html>
+  <head>
+  <title>calendar</title>
+  <link rel="stylesheet" type="text/css" href="style.css">
+  
+  </head>
+  <body>
+  <div id="overlay"></div>
+    <div id="topimg"></div>
+    <div id="calendar"></div>
+  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.11.2.custom/external/jquery/jquery.js"></script>
+    <script src="js/jquery-ui-1.11.2.custom/jquery-ui.js"></script>
+    <script>
+      $('#calendar').datepicker({
+        inline: true,
+        firstDay: 1,
+        showOtherMonths: true,
+        numberOfMonths:3,
+        dayNamesMin: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+      });
+
+      $(function() {
+      setTimeout(function() {
+        $('#overlay').fadeOut(500); 
+      }, 250);
+      });
+      
+      $( document ).ready(function() {
+        var month = $('.ui-datepicker-calendar');
+        var offset = month.offset();
+        var huh = offset.left;
+        $('.ui-datepicker-prev').css('left',huh+'px');
+        $('.ui-datepicker-next').css('right',huh+'px');
+
+        var image = new Array ();
+        image[0] = "a.jpg";
+        image[1] = "b.jpg";
+        image[2] = "c.jpg";
+        image[3] = "d.jpg";
+        image[4] = "e.jpg";
+        image[5] = "f.jpg";
+        image[6] = "g.jpg";
+        image[7] = "h.jpg";
+        image[8] = "i.jpg";
+        image[9] = "j.jpg";
+
+        var size = image.length
+        var x = Math.floor(size*Math.random())
+
+        $('#topimg').css('background-image','url(' + image[x] + ')');
+        $('td').unbind('click');
+        $('.ui-datepicker-calendar').unbind('click');
+      });
+      
+      $('.ui-corner-all').click(function() {
+        var month = $('.ui-datepicker-calendar');
+        var offset = month.offset();
+        var huh = offset.left;
+        $('.ui-datepicker-prev').css('left',huh+'px');
+        $('.ui-datepicker-next').css('right',huh+'px');
+        $('.ui-datepicker-calendar').unbind('click');
+        $('td').unbind('click');
+        
+        var image = new Array ();
+        image[0] = "a.jpg";
+        image[1] = "b.jpg";
+        image[2] = "c.jpg";
+        image[3] = "d.jpg";
+        image[4] = "e.jpg";
+        image[5] = "f.jpg";
+        image[6] = "g.jpg";
+        image[7] = "h.jpg";
+        image[8] = "i.jpg";
+        image[9] = "j.jpg";
+
+        var size = image.length
+        var x = Math.floor(size*Math.random())
+
+        $('#topimg').css('background-image','url(' + image[x] + ')');
+      });
+      
+		  $(window).on('resize', function(){
+			  var win = $(this);
+			  var wht = win.height();
+        var ht = wht * 0.75;
+        $('#topimg').height( ht );     
+        
+        var month = $('.ui-datepicker-month');
+        var offset = month.offset();
+        var huh = offset.left + 50;
+        var heh = offset.right - 50;
+        $('.ui-datepicker-prev').css('left',huh+'px');
+        $('.ui-datepicker-next').css('right',heh+'px');
+      });
+
+      $('#topimg').click(function() {
+        window.location.href = "index.html";
+      }); 
+    </script>
+  </body>
+</html>
